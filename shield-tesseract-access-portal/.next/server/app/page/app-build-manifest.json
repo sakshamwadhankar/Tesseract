@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_app_globals_9a9900c9.css",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_53e7efff._.js",
+      "static/chunks/e057d_next_dist_1d68cab3._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_app_layout_tsx_a1440b68._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_app_global-error_tsx_80b71165._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_app_global-error_tsx_86dd7dc7._.js",
+      "static/chunks/e057d_616fb786._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_8f8ef134._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_src_app_page_tsx_86dd7dc7._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_39cd25f8._.js",
+      "static/chunks/e057d_next_dist_compiled_ccc46802._.js",
+      "static/chunks/e057d_next_dist_client_1df2d894._.js",
+      "static/chunks/e057d_next_dist_ce8a5b35._.js",
+      "static/chunks/e057d_@swc_helpers_cjs_0c0b80ed._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_e69f0d32._.js",
+      "static/chunks/Tesseract_shield-tesseract-access-portal_536132ab._.js"
+    ]
+  }
+}

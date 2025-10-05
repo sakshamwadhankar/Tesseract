@@ -1,0 +1,19 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [
+    "static/chunks/d8654_next_dist_build_polyfills_polyfill-nomodule.js"
+  ],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_42724421._.js",
+    "static/chunks/d8654_next_dist_compiled_a93a1c61._.js",
+    "static/chunks/d8654_next_dist_client_98bb78cf._.js",
+    "static/chunks/d8654_next_dist_eabcbbeb._.js",
+    "static/chunks/d8654_@swc_helpers_cjs_b1361468._.js",
+    "static/chunks/Tesseract_tesseract-hall-of-heroes_e69f0d32._.js",
+    "static/chunks/Tesseract_tesseract-hall-of-heroes_ee9d9f2e._.js"
+  ],
+  "pages": {},
+  "ampFirstPages": []
+}

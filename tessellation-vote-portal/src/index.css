@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Tesseract Cosmic Theme - Deep Space with Energy Blue */
+    --background: 220 40% 5%;
+    --foreground: 210 100% 95%;
+
+    --card: 220 35% 8%;
+    --card-foreground: 210 100% 95%;
+
+    --popover: 220 40% 6%;
+    --popover-foreground: 210 100% 95%;
+
+    /* Tesseract Energy Blue - Primary */
+    --primary: 210 100% 55%;
+    --primary-foreground: 220 40% 5%;
+    --primary-glow: 200 100% 65%;
+
+    /* Cosmic Accents */
+    --secondary: 195 100% 50%;
+    --secondary-foreground: 220 40% 5%;
+
+    --muted: 220 30% 15%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 180 100% 45%;
+    --accent-foreground: 220 40% 5%;
+
+    /* Admin Warning Red */
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 210 100% 95%;
+
+    --border: 210 50% 20%;
+    --input: 220 35% 12%;
+    --ring: 210 100% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(210 100% 25%), hsl(220 40% 5%), hsl(240 60% 10%));
+    --gradient-energy: linear-gradient(90deg, hsl(210 100% 55%), hsl(200 100% 65%), hsl(190 100% 60%));
+    --gradient-warning: linear-gradient(90deg, hsl(0 85% 55%), hsl(15 90% 60%));
+
+    /* Shadows & Glows */
+    --shadow-blue-glow: 0 0 30px hsl(210 100% 55% / 0.5), 0 0 60px hsl(210 100% 55% / 0.3);
+    --shadow-red-glow: 0 0 30px hsl(0 85% 55% / 0.5), 0 0 60px hsl(0 85% 55% / 0.3);
+    --shadow-particle: 0 0 20px hsl(200 100% 65% / 0.6);
+
+    --sidebar-background: 220 35% 8%;
+    --sidebar-foreground: 210 100% 95%;
+    --sidebar-primary: 210 100% 55%;
+    --sidebar-primary-foreground: 220 40% 5%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 210 100% 95%;
+    --sidebar-border: 210 50% 20%;
+    --sidebar-ring: 210 100% 55%;
+  }
+}
+
+@layer utilities {
+  /* Tesseract Animations */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-energy-ripple {
+    animation: energy-ripple 0.6s ease-out;
+  }
+
+  /* Text Effects */
+  .text-glow-blue {
+    text-shadow: 0 0 20px hsl(210 100% 55% / 0.8),
+                 0 0 40px hsl(210 100% 55% / 0.5),
+                 0 0 60px hsl(210 100% 55% / 0.3);
+  }
+
+  .text-3d-metallic {
+    text-shadow: 
+      2px 2px 0px hsl(210 50% 40%),
+      4px 4px 0px hsl(210 50% 30%),
+      6px 6px 0px hsl(210 50% 20%),
+      8px 8px 20px hsl(210 100% 55% / 0.5);
+  }
+
+  /* Background Grid */
+  .cosmic-grid {
+    background-image: 
+      linear-gradient(hsl(210 100% 55% / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(210 100% 55% / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-flow 20s linear infinite;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(var(--shadow-blue-glow));
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.3) drop-shadow(var(--shadow-blue-glow));
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes energy-ripple {
+  0% {
+    box-shadow: 0 0 0 0 hsl(210 100% 55% / 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 20px hsl(210 100% 55% / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 40px hsl(210 100% 55% / 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes grid-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

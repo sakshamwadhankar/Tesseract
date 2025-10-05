@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_app_globals_cf62f37c.css",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_22a99f00._.js",
+      "static/chunks/d8654_next_dist_9fac6ba2._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_app_layout_tsx_c8529fcc._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_app_global-error_tsx_3458bd99._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_app_global-error_tsx_383e6fe8._.js",
+      "static/chunks/d8654_3ab43204._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_components_MarvelLeaderboard_tsx_9a2fdaf7._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_src_app_page_tsx_383e6fe8._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_42724421._.js",
+      "static/chunks/d8654_next_dist_compiled_a93a1c61._.js",
+      "static/chunks/d8654_next_dist_client_98bb78cf._.js",
+      "static/chunks/d8654_next_dist_eabcbbeb._.js",
+      "static/chunks/d8654_@swc_helpers_cjs_b1361468._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_e69f0d32._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_ee9d9f2e._.js"
+    ]
+  }
+}

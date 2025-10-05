@@ -1,0 +1,29 @@
+{
+  "pages": {
+    "/_app": [
+      "static/chunks/[root-of-the-server]__8a3c9068._.js",
+      "static/chunks/d8654_react-dom_488ae3fd._.js",
+      "static/chunks/d8654_9eec3a3e._.js",
+      "static/chunks/[root-of-the-server]__c185efc9._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_pages__app_5771e187._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_pages__app_e15424c6._.js"
+    ],
+    "/_error": [
+      "static/chunks/[root-of-the-server]__bcf9c1fe._.js",
+      "static/chunks/d8654_react-dom_488ae3fd._.js",
+      "static/chunks/d8654_9eec3a3e._.js",
+      "static/chunks/[root-of-the-server]__dc13eaf6._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_pages__error_5771e187._.js",
+      "static/chunks/Tesseract_tesseract-hall-of-heroes_pages__error_7771bf76._.js"
+    ]
+  },
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [
+    "static/development/_ssgManifest.js",
+    "static/development/_buildManifest.js"
+  ],
+  "rootMainFiles": [],
+  "ampFirstPages": []
+}
