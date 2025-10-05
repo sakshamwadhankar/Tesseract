@@ -1,37 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Fingerprint, ShieldAlert, Lock } from "lucide-react";
-
 export default function ShieldLoginPortal() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const [showGlitch, setShowGlitch] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccessMessage("");
     setIsLoading(true);
 
     // Simulate authentication
-    setTimeout(() => {
+    setTimeout(async () => {
       // Demo credentials
       const validUser = email === "agent@shield.gov" && password === "stark2025";
       const validAdmin = email === "admin@shield.gov" && password === "fury2025";
 
       if ((isAdmin && validAdmin) || (!isAdmin && validUser)) {
-        // Success - redirect to dashboard
-        router.push("/dashboard");
+        if (isAdmin) {
+          const { hostname, protocol, origin } = window.location;
+          const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+          const adminProdPath = "/furys-war-room-console/index.html";
+
+          if (isLocalhost) {
+            const adminUrl = `${protocol}//${hostname}:3002`;
+
+            try {
+              await fetch(adminUrl, { mode: "no-cors" });
+              window.location.href = adminUrl;
+            } catch (fetchError) {
+              console.error("Fury's War Room Console unreachable on port 3002.", fetchError);
+              setSuccessMessage("ADMIN ACCESS GRANTED — Launch Fury's War Room Console manually.");
+              alert("Fury's War Room Console not running. Start furys-war-room-console on port 3002.");
+            }
+          } else {
+            window.location.href = `${origin.replace(/\/$/, "")}${adminProdPath}`;
+          }
+
+          setIsLoading(false);
+          return;
+        }
+
+        // Success for participants - stay on portal and show confirmation
+        setIsLoading(false);
+        setSuccessMessage("ACCESS GRANTED — Proceed to Avenger Vote Vault.");
       } else {
         // Error - show glitch effect
         setShowGlitch(true);
@@ -46,18 +71,21 @@ export default function ShieldLoginPortal() {
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-[#001a33] via-[#002b52] to-[#001a33] flex items-center justify-center p-4">
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
             linear-gradient(rgba(0, 150, 255, 0.3) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0, 150, 255, 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
-        }} />
+            backgroundSize: "50px 50px",
+          }}
+        />
       </div>
 
       {/* Scanning line effect */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent scanline opacity-50" />
-      
+
       {/* Random scan lines */}
       <div className="absolute top-[20%] left-0 right-0 h-px bg-cyan-400/30" />
       <div className="absolute top-[45%] left-0 right-0 h-px bg-cyan-400/20" />
@@ -69,32 +97,41 @@ export default function ShieldLoginPortal() {
       <div className="absolute bottom-4 left-4 w-16 h-16 border-l-2 border-b-2 border-cyan-400/50" />
       <div className="absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-cyan-400/50" />
 
-      <Card 
+      <Card
         className={`w-full max-w-md relative z-10 bg-[#001a33]/90 backdrop-blur-sm border-2 transition-all duration-300 ${
           showGlitch ? "glitch" : ""
         } ${
-          isAdmin 
-            ? "border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)] glow-pulse" 
+          isAdmin
+            ? "border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)] glow-pulse"
             : "border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.5)] glow-pulse"
         }`}
       >
         <CardHeader className="space-y-1 pb-4">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Lock className={`w-6 h-6 ${isAdmin ? "text-red-500" : "text-cyan-400"}`} />
-            <h1 className={`text-2xl font-bold tracking-wider ${
-              isAdmin ? "text-red-500" : "text-cyan-400"
-            }`} style={{ fontFamily: 'Orbitron, sans-serif' }}>
+            <h1
+              className={`text-2xl font-bold tracking-wider ${
+                isAdmin ? "text-red-500" : "text-cyan-400"
+              }`}
+              style={{ fontFamily: "Orbitron, sans-serif" }}
+            >
               S.H.I.E.L.D.
             </h1>
           </div>
           <div className="text-center">
-            <p className={`text-xs tracking-widest font-mono ${
-              isAdmin ? "text-red-400" : "text-cyan-300"
-            }`}>
+            <p
+              className={`text-xs tracking-widest font-mono ${
+                isAdmin ? "text-red-400" : "text-cyan-300"
+              }`}
+            >
               TESSERACT 2025 // ACCESS TERMINAL
             </p>
             <div className="flex items-center justify-center gap-1 mt-1">
-              <div className={`w-1.5 h-1.5 rounded-full ${isAdmin ? "bg-red-500" : "bg-cyan-400"} animate-pulse`} />
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${
+                  isAdmin ? "bg-red-500" : "bg-cyan-400"
+                } animate-pulse`}
+              />
               <span className="text-[10px] text-gray-400 font-mono tracking-wider">SECURE CONNECTION</span>
             </div>
           </div>
@@ -106,6 +143,15 @@ export default function ShieldLoginPortal() {
               <ShieldAlert className="h-4 w-4 text-red-500" />
               <AlertDescription className="text-red-400 font-mono text-xs tracking-wider">
                 {error}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {!error && successMessage && (
+            <Alert className="border-cyan-500 bg-cyan-900/40">
+              <ShieldAlert className="h-4 w-4 text-cyan-300" />
+              <AlertDescription className="text-cyan-200 font-mono text-xs tracking-wider">
+                {successMessage}
               </AlertDescription>
             </Alert>
           )}
@@ -152,8 +198,8 @@ export default function ShieldLoginPortal() {
                   type="button"
                   onClick={() => setIsAdmin(false)}
                   className={`relative z-10 px-6 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
-                    !isAdmin 
-                      ? "text-cyan-900 font-bold" 
+                    !isAdmin
+                      ? "text-cyan-900 font-bold"
                       : "text-cyan-400 hover:text-cyan-300"
                   }`}
                 >
@@ -163,17 +209,17 @@ export default function ShieldLoginPortal() {
                   type="button"
                   onClick={() => setIsAdmin(true)}
                   className={`relative z-10 px-6 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
-                    isAdmin 
-                      ? "text-red-900 font-bold" 
+                    isAdmin
+                      ? "text-red-900 font-bold"
                       : "text-red-400 hover:text-red-300"
                   }`}
                 >
                   ADMIN MODE
                 </button>
-                <div 
+                <div
                   className={`absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full transition-all duration-300 ${
-                    isAdmin 
-                      ? "translate-x-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.7)]" 
+                    isAdmin
+                      ? "translate-x-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.7)]"
                       : "translate-x-0 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.7)]"
                   }`}
                 />

@@ -42,19 +42,36 @@ const Index = () => {
             variant="energy" 
             size="xl"
             className="font-display uppercase"
-            onClick={() => console.log('Participant Entry')}
+            onClick={async () => {
+              try {
+                const { hostname, protocol, origin } = window.location;
+                const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+                const prodLoginPath = "/shield-tesseract-access-portal/index.html";
+
+                if (isLocalhost) {
+                  const loginUrl = `${protocol}//${hostname}:3000`;
+
+                  try {
+                    await fetch(loginUrl, { mode: "no-cors" });
+                    window.location.href = loginUrl;
+                  } catch (fetchError) {
+                    console.error("Login portal unreachable on port 3000.", fetchError);
+                    alert("Login portal not running. Start shield-tesseract-access-portal on port 3000.");
+                  }
+
+                  return;
+                }
+
+                window.location.href = `${origin.replace(/\/$/, "")}${prodLoginPath}`;
+              } catch (error) {
+                console.error("Failed to open login portal.", error);
+                alert("Unable to open login portal. Please try again or contact support.");
+              }
+            }}
           >
-            Enter as Participant
+            start
           </Button>
           
-          <Button 
-            variant="warning" 
-            size="xl"
-            className="font-display uppercase"
-            onClick={() => console.log('Admin Access')}
-          >
-            Access Admin Console
-          </Button>
         </div>
         
         {/* Footer with Easter Egg */}

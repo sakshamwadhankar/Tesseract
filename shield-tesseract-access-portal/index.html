@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesseract 2025 Login</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif; /* Marvel-style font */
+            background: radial-gradient(circle at center, #0a0a2a, #000000); /* Cosmic background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.8); /* Tesseract cyan glow */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 400px;
+            width: 90%;
+        }
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, rgba(6, 182, 212, 0.5) 0%, transparent 20%, transparent 80%, rgba(6, 182, 212, 0.5) 100%);
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        h2 {
+            color: #06b6d4; /* Tesseract cyan */
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #06b6d4;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0ea5e9; /* Glow blue */
+        }
+        .input-group input[type="email"],
+        .input-group input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-group input[type="email"]:focus,
+        .input-group input[type="password"]:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        }
+        .role-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .role-selector h3 {
+            color: #0ea5e9;
+            margin-bottom: 10px;
+        }
+        .role-selector label {
+            margin: 0 15px;
+            color: white;
+            cursor: pointer;
+        }
+        .role-selector input[type="radio"] {
+            margin-right: 5px;
+            accent-color: #06b6d4; /* Tesseract cyan for radio button */
+        }
+        button {
+            background-color: #06b6d4; /* Tesseract cyan */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            text-transform: uppercase;\n            letter-spacing: 1px;\n            font-weight: bold;\n            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);\n        }\n        button:hover {\n            background-color: #0ea5e9; /* Glow blue on hover */\n            box-shadow: 0 0 25px rgba(14, 165, 233, 0.8);\n            transform: translateY(-2px);\n        }\n    </style>\n    <link href=\"https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap\" rel=\"stylesheet\">\n</head>\n<body>\n    <div class=\"login-container\">\n        <h2>Tesseract 2025 Access Portal</h2>\n        <div class=\"input-group\">\n            <label for=\"email\">Email:</label>\n            <input type=\"email\" id=\"email\" placeholder=\"Enter your email\">\n        </div>\n        <div class=\"input-group\">\n            <label for=\"password\">Password:</label>\n            <input type=\"password\" id=\"password\" placeholder=\"Enter your password\">\n        </div>\n\n        <div class=\"role-selector\">\n            <h3>Select Role</h3>\n            <label>\n                <input type=\"radio\" name=\"role\" value=\"user\" checked> User\n            </label>\n            <label>\n                <input type=\"radio\" name=\"role\" value=\"admin\"> Admin\n            </label>\n        </div>\n        \n        <button onclick=\"handleLogin()\">LOGIN</button>\n\n        <script>\n            function handleLogin() {\n                const email = document.getElementById(\'email\').value;\n                const password = document.getElementById(\'password\').value;\n                const role = document.querySelector(\'input[name=\"role\"]:checked\').value;\n                \n                if (email && password) {\n                    if (role === \'admin\') {\n                        window.location.href = \'../../furys-war-room-console/index.html\';\n                    } else {\n                        window.location.href = \'../../avenger-vote-vault/index.html\';\n                    }\n                } else {\n                    alert(\'Please enter email and password\');\n                }\n            }\n        </script>\n    </div>\n</body>\n</html>
