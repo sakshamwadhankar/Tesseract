@@ -1,0 +1,3 @@
+[build]
+  publish = "tessellation-vote-portal"
+  command = ""
