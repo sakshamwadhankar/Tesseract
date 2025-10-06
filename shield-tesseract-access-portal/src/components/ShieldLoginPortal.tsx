@@ -30,6 +30,9 @@ export default function ShieldLoginPortal() {
       const validAdmin = email === "admin@shield.gov" && password === "fury2025";
 
       if ((isAdmin && validAdmin) || (!isAdmin && validUser)) {
+        const { hostname, protocol, origin } = window.location;
+        const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+
         if (isAdmin) {
           const { hostname, protocol, origin } = window.location;
           const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
@@ -54,9 +57,27 @@ export default function ShieldLoginPortal() {
           return;
         }
 
-        // Success for participants - stay on portal and show confirmation
+        const participantProdPath = "/marvel-tesseract-dashboard/index.html";
+
+        if (isLocalhost) {
+          const participantUrl = `${protocol}//${hostname}:3001`;
+
+          try {
+            await fetch(participantUrl, { mode: "no-cors" });
+            window.location.href = participantUrl;
+          } catch (fetchError) {
+            console.error("Marvel Tesseract Dashboard unreachable on port 3001.", fetchError);
+            setSuccessMessage("ACCESS GRANTED — Launch Marvel Tesseract Dashboard manually.");
+            alert("Marvel Tesseract Dashboard not running. Start marvel-tesseract-dashboard on port 3001.");
+          }
+
+          setIsLoading(false);
+          return;
+        }
+
+        window.location.href = `${origin.replace(/\/$/, "")}${participantProdPath}`;
         setIsLoading(false);
-        setSuccessMessage("ACCESS GRANTED — Proceed to Avenger Vote Vault.");
+        return;
       } else {
         // Error - show glitch effect
         setShowGlitch(true);

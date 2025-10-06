@@ -335,6 +335,8 @@ function ShieldLoginPortal() {
             const validUser = email === "agent@shield.gov" && password === "stark2025";
             const validAdmin = email === "admin@shield.gov" && password === "fury2025";
             if (isAdmin && validAdmin || !isAdmin && validUser) {
+                const { hostname, protocol, origin } = window.location;
+                const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
                 if (isAdmin) {
                     const { hostname, protocol, origin } = window.location;
                     const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
@@ -357,9 +359,25 @@ function ShieldLoginPortal() {
                     setIsLoading(false);
                     return;
                 }
-                // Success for participants - stay on portal and show confirmation
+                const participantProdPath = "/marvel-tesseract-dashboard/index.html";
+                if (isLocalhost) {
+                    const participantUrl = `${protocol}//${hostname}:3001`;
+                    try {
+                        await fetch(participantUrl, {
+                            mode: "no-cors"
+                        });
+                        window.location.href = participantUrl;
+                    } catch (fetchError) {
+                        console.error("Marvel Tesseract Dashboard unreachable on port 3001.", fetchError);
+                        setSuccessMessage("ACCESS GRANTED — Launch Marvel Tesseract Dashboard manually.");
+                        alert("Marvel Tesseract Dashboard not running. Start marvel-tesseract-dashboard on port 3001.");
+                    }
+                    setIsLoading(false);
+                    return;
+                }
+                window.location.href = `${origin.replace(/\/$/, "")}${participantProdPath}`;
                 setIsLoading(false);
-                setSuccessMessage("ACCESS GRANTED — Proceed to Avenger Vote Vault.");
+                return;
             } else {
                 // Error - show glitch effect
                 setShowGlitch(true);
@@ -385,68 +403,68 @@ function ShieldLoginPortal() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                    lineNumber: 74,
+                    lineNumber: 95,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 73,
+                lineNumber: 94,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent scanline opacity-50"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 87,
+                lineNumber: 108,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-[20%] left-0 right-0 h-px bg-cyan-400/30"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 90,
+                lineNumber: 111,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-[45%] left-0 right-0 h-px bg-cyan-400/20"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 91,
+                lineNumber: 112,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-[70%] left-0 right-0 h-px bg-cyan-400/30"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 92,
+                lineNumber: 113,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-cyan-400/50"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 95,
+                lineNumber: 116,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute top-4 right-4 w-16 h-16 border-r-2 border-t-2 border-cyan-400/50"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 96,
+                lineNumber: 117,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-4 left-4 w-16 h-16 border-l-2 border-b-2 border-cyan-400/50"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 97,
+                lineNumber: 118,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-cyan-400/50"
             }, void 0, false, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 98,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -462,7 +480,7 @@ function ShieldLoginPortal() {
                                         className: `w-6 h-6 ${isAdmin ? "text-red-500" : "text-cyan-400"}`
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -473,13 +491,13 @@ function ShieldLoginPortal() {
                                         children: "S.H.I.E.L.D."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 133,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 110,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -490,7 +508,7 @@ function ShieldLoginPortal() {
                                         children: "TESSERACT 2025 // ACCESS TERMINAL"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 143,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -500,7 +518,7 @@ function ShieldLoginPortal() {
                                                 className: `w-1.5 h-1.5 rounded-full ${isAdmin ? "bg-red-500" : "bg-cyan-400"} animate-pulse`
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 130,
+                                                lineNumber: 151,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -508,25 +526,25 @@ function ShieldLoginPortal() {
                                                 children: "SECURE CONNECTION"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 156,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 129,
+                                        lineNumber: 150,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 121,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                        lineNumber: 109,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -539,7 +557,7 @@ function ShieldLoginPortal() {
                                         className: "h-4 w-4 text-red-500"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 143,
+                                        lineNumber: 164,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDescription"], {
@@ -547,13 +565,13 @@ function ShieldLoginPortal() {
                                         children: error
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 144,
+                                        lineNumber: 165,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 142,
+                                lineNumber: 163,
                                 columnNumber: 13
                             }, this),
                             !error && successMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
@@ -563,7 +581,7 @@ function ShieldLoginPortal() {
                                         className: "h-4 w-4 text-cyan-300"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 152,
+                                        lineNumber: 173,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDescription"], {
@@ -571,13 +589,13 @@ function ShieldLoginPortal() {
                                         children: successMessage
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 174,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 151,
+                                lineNumber: 172,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -593,7 +611,7 @@ function ShieldLoginPortal() {
                                                 children: "AGENT ID"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 161,
+                                                lineNumber: 182,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -606,13 +624,13 @@ function ShieldLoginPortal() {
                                                 required: true
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 164,
+                                                lineNumber: 185,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 160,
+                                        lineNumber: 181,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -624,7 +642,7 @@ function ShieldLoginPortal() {
                                                 children: "CLEARANCE CODE"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 178,
+                                                lineNumber: 199,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -637,13 +655,13 @@ function ShieldLoginPortal() {
                                                 required: true
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 202,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 177,
+                                        lineNumber: 198,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -658,7 +676,7 @@ function ShieldLoginPortal() {
                                                     children: "PARTICIPANT MODE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 218,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -668,25 +686,25 @@ function ShieldLoginPortal() {
                                                     children: "ADMIN MODE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 208,
+                                                    lineNumber: 229,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full transition-all duration-300 ${isAdmin ? "translate-x-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.7)]" : "translate-x-0 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.7)]"}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 240,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 217,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 216,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -700,20 +718,20 @@ function ShieldLoginPortal() {
                                                     className: "w-5 h-5 fingerprint-scan"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 240,
+                                                    lineNumber: 261,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "SCANNING..."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 241,
+                                                    lineNumber: 262,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                            lineNumber: 239,
+                                            lineNumber: 260,
                                             columnNumber: 17
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex items-center justify-center gap-2",
@@ -722,31 +740,31 @@ function ShieldLoginPortal() {
                                                     className: "w-5 h-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 266,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "INITIATE LOGIN"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                                    lineNumber: 246,
+                                                    lineNumber: 267,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                            lineNumber: 244,
+                                            lineNumber: 265,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 250,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 159,
+                                lineNumber: 180,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -760,12 +778,12 @@ function ShieldLoginPortal() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                    lineNumber: 253,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 252,
+                                lineNumber: 273,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -775,24 +793,24 @@ function ShieldLoginPortal() {
                                     children: "Demo: agent@shield.gov / stark2025 (user) | admin@shield.gov / fury2025 (admin)"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 281,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 259,
+                                lineNumber: 280,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                        lineNumber: 140,
+                        lineNumber: 161,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 100,
+                lineNumber: 121,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -802,7 +820,7 @@ function ShieldLoginPortal() {
                         children: "SYSTEM STATUS: OPERATIONAL"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                        lineNumber: 269,
+                        lineNumber: 290,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -812,26 +830,26 @@ function ShieldLoginPortal() {
                                 className: "w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                                lineNumber: 271,
+                                lineNumber: 292,
                                 columnNumber: 11
                             }, this),
                             "SECURE"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                        lineNumber: 270,
+                        lineNumber: 291,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-                lineNumber: 268,
+                lineNumber: 289,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ShieldLoginPortal.tsx",
-        lineNumber: 71,
+        lineNumber: 92,
         columnNumber: 5
     }, this);
 }
