@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESSERACT 2025 - Hackathon Voting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+        
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .component-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        .component-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+        
+        .component-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .status {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .status h4 {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-browser {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .file-browser h4 {
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+        
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .file-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border-left: 3px solid #4ecdc4;
+        }
+        
+        .file-item a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .file-item a:hover {
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">TESSERACT 2025</h1>
+        <p class="subtitle">Hackathon Voting System - Marvel Universe</p>
+        
+        <div class="status">
+            <h4>⚠️ Development Status</h4>
+            <p>The React components need to be built. For now, you can browse the project structure and access any static files.</p>
+        </div>
+        
+        <div class="components-grid">
+            <div class="component-card">
+                <h3>🗳️ Tessellation Vote Portal</h3>
+                <p>Main voting interface where participants cast their votes for hackathon projects.</p>
+                <a href="/tessellation-vote-portal/" class="btn">Browse Files</a>
+            </div>
+            
+            <div class="component-card">
+                <h3>🔐 Shield Access Portal</h3>
+                <p>Secure login system for authenticated access to the voting platform.</p>
+                <a href="/shield-tesseract-access-portal/" class="btn">Browse Files</a>
+            </div>
+            
+            <div class="component-card">
+                <h3>⚡ Fury's War Room Console</h3>
+                <p>Admin dashboard for managing projects, votes, and system settings.</p>
+                <a href="/furys-war-room-console/" class="btn">Browse Files</a>
+            </div>
+            
+            <div class="component-card">
+                <h3>🏆 Hall of Heroes</h3>
+                <p>Leaderboard displaying top-voted projects and real-time results.</p>
+                <a href="/tesseract-hall-of-heroes/" class="btn">Browse Files</a>
+            </div>
+            
+            <div class="component-card">
+                <h3>👤 Marvel Dashboard</h3>
+                <p>User profile and personal voting history interface.</p>
+                <a href="/marvel-tesseract-dashboard/" class="btn">Browse Files</a>
+            </div>
+            
+            <div class="component-card">
+                <h3>🦸 Avenger Vote Vault</h3>
+                <p>Secure vote storage and validation system.</p>
+                <a href="/avenger-vote-vault/" class="btn">Browse Files</a>
+            </div>
+        </div>
+        
+        <div class="file-browser">
+            <h4>📁 Quick File Access</h4>
+            <div class="file-list">
+                <div class="file-item">
+                    <a href="/SETUP_GUIDE.md">📖 Setup Guide</a>
+                </div>
+                <div class="file-item">
+                    <a href="/README.md">📄 README</a>
+                </div>
+                <div class="file-item">
+                    <a href="/package.json">⚙️ Package Config</a>
+                </div>
+                <div class="file-item">
+                    <a href="/database/">🗄️ Database Schema</a>
+                </div>
+                <div class="file-item">
+                    <a href="/components/">🧩 Components</a>
+                </div>
+                <div class="file-item">
+                    <a href="/lib/">📚 Libraries</a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; opacity: 0.6;">
+            <p>🚀 Server running on Python HTTP Server | Port 3000</p>
+            <p>💡 To run the React apps, you'll need to build them first with npm/yarn</p>
+        </div>
+    </div>
+</body>
+</html>

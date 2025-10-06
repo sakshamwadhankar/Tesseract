@@ -7,7 +7,7 @@ const compat = new FlatCompat({
  
 const eslintConfig = [
   ...compat.config({
-    extends: ['next'],
+    extends: ['next', 'next/typescript'],
     plugins: ['import'],
   }),
   {

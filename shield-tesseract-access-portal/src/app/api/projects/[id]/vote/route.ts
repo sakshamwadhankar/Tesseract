@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
       // Increment project vote count
       const updatedProject = await tx.update(projects)
         .set({
-          voteCount: project[0].voteCount + 1,
+          voteCount: (project[0]?.voteCount || 0) + 1,
           updatedAt: new Date().toISOString()
         })
         .where(eq(projects.id, parseInt(projectId)))

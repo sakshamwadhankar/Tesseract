@@ -37,8 +37,8 @@ export async function GET(request: NextRequest) {
     const sort = searchParams.get('sort') || 'createdAt';
     const order = searchParams.get('order') || 'desc';
     
-    let query = db.select().from(projects);
-    let conditions = [];
+    // Build conditions array
+    const conditions = [];
     
     // Search filter
     if (search) {
@@ -54,16 +54,18 @@ export async function GET(request: NextRequest) {
       }
     }
     
-    // Apply filters
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
-    
     // Apply sorting
     const sortColumn = sort === 'teamName' ? projects.teamName :
                       sort === 'voteCount' ? projects.voteCount :
                       sort === 'updatedAt' ? projects.updatedAt :
                       projects.createdAt;
+    
+    // Build the complete query
+    let query: any = db.select().from(projects);
+    
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions));
+    }
     
     query = query.orderBy(order === 'asc' ? asc(sortColumn) : desc(sortColumn));
     query = query.limit(limit).offset(offset);
